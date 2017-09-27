@@ -3,7 +3,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import entities.GuiaCamara;
-import source.entities.Player;
+import entities.Player;
 import entities.Reg;
 
 class PlayState extends FlxState
@@ -34,14 +34,14 @@ class PlayState extends FlxState
 	
 	function playerLose() 
 	{
-		if (player.tieneEscudo) 
+		if (player.tieneEscudo()) 
 		{
 			player.pierdeEscudo();
 		} else if (cantVidas > 0) 
 		{
 			cantVidas--;
 		}
-		if (cantVidas =< 0) 
+		if (cantVidas <= 0) 
 		{
 			gameOver = true;
 		}

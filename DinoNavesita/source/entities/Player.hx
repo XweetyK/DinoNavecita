@@ -1,6 +1,5 @@
-package source.entities;
+package entities;
 
-import cpp.Void;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
@@ -33,7 +32,6 @@ class Player extends FlxSprite
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		velocity.set(velocidad, 0);
 		movimiento();
 	}
 	
@@ -58,26 +56,31 @@ class Player extends FlxSprite
 	}
 	private function movimiento():Void
 	{
+		velocity.x = velocidad;
+		if (velocity.y > 25)
+		velocity.y -= 25;
+		else
+		velocity.y = 0;
 		if (FlxG.keys.pressed.RIGHT) 
-			velocity.x += velocidad;
+			velocity.x += Reg.velocidadX;
 		if (FlxG.keys.pressed.LEFT) 
-			velocity.x -= velocidad;
+			velocity.x -= Reg.velocidadX;
 		if (FlxG.keys.pressed.DOWN) 
-			velocity.y += velocidad;
+			velocity.y = Reg.velocidadY;
 		if (FlxG.keys.pressed.UP) 
-			velocity.y -= velocidad;
+			velocity.y = -Reg.velocidadY;
 		OOB();
 	}
 	
 	private function OOB():Void
 	{
-		if (this.x < 0) 
-			this.x = 0;
-		if (this.y < 0)
-			this.y = 0;
-		if (this.x > FlxG.width)
-			this.x = FlxG.width;
-		if (this.y > FlxG.height)
-			this.y = FlxG.height;
+		if (this.x < FlxG.camera.scroll.x) 
+			this.x = FlxG.camera.scroll.x;
+		if (this.y < FlxG.camera.scroll.y)
+			this.y = FlxG.camera.scroll.y;
+		if (this.x > FlxG.camera.scroll.x + FlxG.camera.width - this.width)
+			this.x = FlxG.camera.scroll.x + FlxG.camera.width - this.width;
+		if (this.y > FlxG.camera.scroll.y + FlxG.camera.height- this.height)
+			this.y = FlxG.camera.scroll.y + FlxG.camera.height - this.height;
 	}
 }

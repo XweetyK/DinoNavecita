@@ -8,9 +8,11 @@ class Reg
 {
 	//Aca van variables universales
 	//vel basica camara
-	static inline public var velocidadCamara:Float = 50;
+	static inline public var velocidadCamara:Float = 15;
 	
 	//Player
 	static inline public var cantVidasMax:Int = 3;
+	static inline public var velocidadY:Int = 400;
+	static inline public var velocidadX:Int = 400;
 	
 }
