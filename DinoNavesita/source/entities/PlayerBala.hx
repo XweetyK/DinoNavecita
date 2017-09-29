@@ -1,6 +1,7 @@
 package entities;
 
 import flixel.FlxSprite;
+import flixel.math.FlxRandom;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import entities.Reg;
 import flixel.FlxG;
@@ -18,6 +19,9 @@ class PlayerBala extends FlxSprite
 		animation.add("Brillo", [0, 1, 2], 12, true);
 		animation.play("Brillo");
 		velocity.x = Reg.velocidadCamara + Reg.velocidadBalaX;
+		
+		var r:FlxRandom = new FlxRandom();
+		velocity.y = r.float( -40, 40);
 		
 	}
 	
