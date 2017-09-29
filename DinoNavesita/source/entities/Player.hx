@@ -24,9 +24,9 @@ class Player extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset,balas:FlxTypedGroup<PlayerBala>) 
 	{
 		super(X, Y, simpleGraphic);
-		//loadGraphic();
-		//animation.add();
-		//animation.play();
+		loadGraphic(AssetPaths.Dinopianito__png, true, 32, 32);
+		animation.add("fly", [0, 1, 2, 3], 12, true);
+		animation.play("fly");
 		vidas = 3;
 		misil = false;
 		escudo = false;
@@ -56,7 +56,7 @@ class Player extends FlxSprite
 	{
 		if (FlxG.keys.pressed.SPACE)
 		{
-			b = new PlayerBala(this.x,this.y);
+			b = new PlayerBala(this.x+10,this.y+10);
 			balasRef.add(b);
 			intervalo = 0;
 		}
