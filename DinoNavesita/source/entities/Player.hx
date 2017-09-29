@@ -14,7 +14,7 @@ class Player extends FlxSprite
 	private var escudo:Bool;
 	private var boost:Bool;
 	private var vidas:Int;
-	private var velocidad:Int;
+	private var velocidadMin:Int;
 	
 	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset) 
 	{
@@ -26,7 +26,8 @@ class Player extends FlxSprite
 		misil = false;
 		escudo = false;
 		boost = false;
-		velocidad = Reg.velocidadCamara;
+		//Reemplaza a velocity.x = 0 ya que se mueve a la velocidad de la camara.
+		velocidadMin = Reg.velocidadCamara;
 	}
 	
 	override public function update(elapsed:Float):Void
@@ -56,11 +57,24 @@ class Player extends FlxSprite
 	}
 	private function movimiento():Void
 	{
-		velocity.x = velocidad;
-		if (velocity.y > 25)
-		velocity.y -= 25;
-		else
+		if (velocity.y >= 1 || velocity.y <= -1 )
+		{
+			velocity.y = velocity.y * 0.8;
+			
+		}
+		else 
+		{
 		velocity.y = 0;
+		}
+		if (velocity.x >= 1+ velocidadMin || velocity.x <= -1 - velocidadMin )
+		{
+			velocity.x = velocity.x * 0.6;
+		}
+		else
+		{
+		velocity.x = velocidadMin;
+		}
+		
 		if (FlxG.keys.pressed.RIGHT) 
 			velocity.x += Reg.velocidadX;
 		if (FlxG.keys.pressed.LEFT) 
@@ -69,6 +83,7 @@ class Player extends FlxSprite
 			velocity.y = Reg.velocidadY;
 		if (FlxG.keys.pressed.UP) 
 			velocity.y = -Reg.velocidadY;
+		
 		OOB();
 	}
 	

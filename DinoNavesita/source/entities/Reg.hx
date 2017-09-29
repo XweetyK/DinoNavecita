@@ -12,7 +12,7 @@ class Reg
 	
 	//Player
 	static inline public var cantVidasMax:Int = 3;
-	static inline public var velocidadY:Int = 400;
-	static inline public var velocidadX:Int = 400;
+	static inline public var velocidadY:Int = 135;
+	static inline public var velocidadX:Int = 75;
 	
 }

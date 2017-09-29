@@ -131,7 +131,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "6",
+			build: "41",
 			company: "ChikoritasTeam",
 			file: "DinoNavesita",
 			fps: 60,
@@ -155,7 +155,7 @@ class ApplicationMain {
 					stencilBuffer: true,
 					title: "DinoNavesita",
 					vsync: true,
-					width: 640,
+					width: 512,
 					x: null,
 					y: null
 				},
@@ -173,7 +173,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 640, 480, "000000");
+		openfl.Lib.embed (null, 512, 480, "000000");
 		#end
 		#else
 		create ();
