@@ -57,6 +57,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -66,14 +77,36 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
-		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
-		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
-		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
-		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
-		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
-		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
-		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
-		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
+		className.set ("assets/data/dinonivel.oel", __ASSET__assets_data_dinonivel_oel);
+		type.set ("assets/data/dinonivel.oel", AssetType.TEXT);
+		className.set ("assets/data/dinonivel.oep", __ASSET__assets_data_dinonivel_oep);
+		type.set ("assets/data/dinonivel.oep", AssetType.TEXT);
+		className.set ("assets/data/levelv2.oep", __ASSET__assets_data_levelv2_oep);
+		type.set ("assets/data/levelv2.oep", AssetType.TEXT);
+		className.set ("assets/data/floor.png", __ASSET__assets_data_floor_png);
+		type.set ("assets/data/floor.png", AssetType.IMAGE);
+		className.set ("assets/data/levelv2.oel", __ASSET__assets_data_levelv2_oel);
+		type.set ("assets/data/levelv2.oel", AssetType.TEXT);
+		className.set ("assets/images/Background.png", __ASSET__assets_images_background_png);
+		type.set ("assets/images/Background.png", AssetType.IMAGE);
+		className.set ("assets/images/Dinopianito.png", __ASSET__assets_images_dinopianito_png);
+		type.set ("assets/images/Dinopianito.png", AssetType.IMAGE);
+		className.set ("assets/images/dinoshot.png", __ASSET__assets_images_dinoshot_png);
+		type.set ("assets/images/dinoshot.png", AssetType.IMAGE);
+		className.set ("assets/images/floor.png", __ASSET__assets_images_floor_png);
+		type.set ("assets/images/floor.png", AssetType.IMAGE);
+		className.set ("assets/images/FRUTITA.png", __ASSET__assets_images_frutita_png);
+		type.set ("assets/images/FRUTITA.png", AssetType.IMAGE);
+		className.set ("assets/images/option.png", __ASSET__assets_images_option_png);
+		type.set ("assets/images/option.png", AssetType.IMAGE);
+		className.set ("assets/images/YEE.png", __ASSET__assets_images_yee_png);
+		type.set ("assets/images/YEE.png", AssetType.IMAGE);
+		className.set ("assets/images/YEE2.png", __ASSET__assets_images_yee2_png);
+		type.set ("assets/images/YEE2.png", AssetType.IMAGE);
+		className.set ("assets/images/YEE3.png", __ASSET__assets_images_yee3_png);
+		type.set ("assets/images/YEE3.png", AssetType.IMAGE);
+		className.set ("assets/music/shoot.wav", __ASSET__assets_music_shoot_wav);
+		type.set ("assets/music/shoot.wav", AssetType.SOUND);
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
 		className.set ("flixel/sounds/flixel.ogg", __ASSET__flixel_sounds_flixel_ogg);
@@ -91,22 +124,66 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#elseif html5
 		
 		var id;
-		id = "assets/data/data-goes-here.txt";
+		id = "assets/data/dinonivel.oel";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
-		id = "assets/images/images-go-here.txt";
+		id = "assets/data/dinonivel.oep";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
-		id = "assets/music/music-goes-here.txt";
+		id = "assets/data/levelv2.oep";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
-		id = "assets/sounds/sounds-go-here.txt";
+		id = "assets/data/floor.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/data/levelv2.oel";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/Background.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Dinopianito.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/dinoshot.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/floor.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/FRUTITA.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/option.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/YEE.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/YEE2.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/YEE3.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/music/shoot.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
 		id = "flixel/sounds/beep.ogg";
 		path.set (id, id);
 		
@@ -149,17 +226,50 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		var useManifest = false;
 		
-		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
-		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/dinonivel.oel", __ASSET__assets_data_dinonivel_oel);
+		type.set ("assets/data/dinonivel.oel", AssetType.TEXT);
 		
-		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
-		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		className.set ("assets/data/dinonivel.oep", __ASSET__assets_data_dinonivel_oep);
+		type.set ("assets/data/dinonivel.oep", AssetType.TEXT);
 		
-		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
-		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/levelv2.oep", __ASSET__assets_data_levelv2_oep);
+		type.set ("assets/data/levelv2.oep", AssetType.TEXT);
 		
-		className.set ("assets/sounds/sounds-go-here.txt", __ASSET__assets_sounds_sounds_go_here_txt);
-		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
+		className.set ("assets/data/floor.png", __ASSET__assets_data_floor_png);
+		type.set ("assets/data/floor.png", AssetType.IMAGE);
+		
+		className.set ("assets/data/levelv2.oel", __ASSET__assets_data_levelv2_oel);
+		type.set ("assets/data/levelv2.oel", AssetType.TEXT);
+		
+		className.set ("assets/images/Background.png", __ASSET__assets_images_background_png);
+		type.set ("assets/images/Background.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Dinopianito.png", __ASSET__assets_images_dinopianito_png);
+		type.set ("assets/images/Dinopianito.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/dinoshot.png", __ASSET__assets_images_dinoshot_png);
+		type.set ("assets/images/dinoshot.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/floor.png", __ASSET__assets_images_floor_png);
+		type.set ("assets/images/floor.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/FRUTITA.png", __ASSET__assets_images_frutita_png);
+		type.set ("assets/images/FRUTITA.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/option.png", __ASSET__assets_images_option_png);
+		type.set ("assets/images/option.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/YEE.png", __ASSET__assets_images_yee_png);
+		type.set ("assets/images/YEE.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/YEE2.png", __ASSET__assets_images_yee2_png);
+		type.set ("assets/images/YEE2.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/YEE3.png", __ASSET__assets_images_yee3_png);
+		type.set ("assets/images/YEE3.png", AssetType.IMAGE);
+		
+		className.set ("assets/music/shoot.wav", __ASSET__assets_music_shoot_wav);
+		type.set ("assets/music/shoot.wav", AssetType.SOUND);
 		
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
@@ -823,10 +933,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if !display
 #if flash
 
-@:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends null { }
-@:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends null { }
-@:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends null { }
-@:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_dinonivel_oel extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_dinonivel_oep extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_levelv2_oep extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_floor_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_data_levelv2_oel extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_background_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_dinopianito_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_dinoshot_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_floor_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_frutita_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_option_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_yee_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_yee2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_yee3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_music_shoot_wav extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
@@ -836,6 +957,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -856,10 +988,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux || cpp)
 
 
-@:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.Bytes {}
-@:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.Bytes {}
-@:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.Bytes {}
-@:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.Bytes {}
+@:file("assets/data/dinonivel.oel") #if display private #end class __ASSET__assets_data_dinonivel_oel extends lime.utils.Bytes {}
+@:file("assets/data/dinonivel.oep") #if display private #end class __ASSET__assets_data_dinonivel_oep extends lime.utils.Bytes {}
+@:file("assets/data/levelv2.oep") #if display private #end class __ASSET__assets_data_levelv2_oep extends lime.utils.Bytes {}
+@:image("assets/data/floor.png") #if display private #end class __ASSET__assets_data_floor_png extends lime.graphics.Image {}
+@:file("assets/data/levelv2.oel") #if display private #end class __ASSET__assets_data_levelv2_oel extends lime.utils.Bytes {}
+@:image("assets/images/Background.png") #if display private #end class __ASSET__assets_images_background_png extends lime.graphics.Image {}
+@:image("assets/images/Dinopianito.png") #if display private #end class __ASSET__assets_images_dinopianito_png extends lime.graphics.Image {}
+@:image("assets/images/dinoshot.png") #if display private #end class __ASSET__assets_images_dinoshot_png extends lime.graphics.Image {}
+@:image("assets/images/floor.png") #if display private #end class __ASSET__assets_images_floor_png extends lime.graphics.Image {}
+@:image("assets/images/FRUTITA.png") #if display private #end class __ASSET__assets_images_frutita_png extends lime.graphics.Image {}
+@:image("assets/images/option.png") #if display private #end class __ASSET__assets_images_option_png extends lime.graphics.Image {}
+@:image("assets/images/YEE.png") #if display private #end class __ASSET__assets_images_yee_png extends lime.graphics.Image {}
+@:image("assets/images/YEE2.png") #if display private #end class __ASSET__assets_images_yee2_png extends lime.graphics.Image {}
+@:image("assets/images/YEE3.png") #if display private #end class __ASSET__assets_images_yee3_png extends lime.graphics.Image {}
+@:file("assets/music/shoot.wav") #if display private #end class __ASSET__assets_music_shoot_wav extends lime.utils.Bytes {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/4,3,0/assets/sounds/beep.ogg") #if display private #end class __ASSET__flixel_sounds_beep_ogg extends lime.utils.Bytes {}
 @:file("C:/HaxeToolkit/haxe/lib/flixel/4,3,0/assets/sounds/flixel.ogg") #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends lime.utils.Bytes {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,3,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}

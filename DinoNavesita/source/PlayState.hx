@@ -1,4 +1,5 @@
 package;
+import entities.Enemy1;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.editors.ogmo.FlxOgmoLoader;
@@ -21,15 +22,18 @@ class PlayState extends FlxState
 	private var a:PlayerBala;
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
+	var enemyGroup:FlxTypedGroup<Enemy1>;
 	
 	override public function create():Void
 	{
 		super.create();
 		
+		enemyGroup = new FlxTypedGroup<Enemy1>();
+		
 		//Mapa de Ogmo
-		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.dinonivel__oel);
-		tilemap = loader.loadTilemap(AssetPaths.floor__png, 32, 32, "tiles");
-		tilemap.setTileProperties(0, FlxObject.ANY);
+		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.levelv2__oel);
+		tilemap = loader.loadTilemap(AssetPaths.floor__png, 30, 30, "Tileset");
+		tilemap.setTileProperties(0, FlxObject.NONE);
 		tilemap.setTileProperties(1, FlxObject.ANY);
 		tilemap.setTileProperties(2, FlxObject.ANY);
 		tilemap.setTileProperties(3, FlxObject.ANY);
@@ -41,6 +45,10 @@ class PlayState extends FlxState
 		tilemap.setTileProperties(9, FlxObject.ANY);
 		tilemap.setTileProperties(10, FlxObject.ANY);
 		tilemap.setTileProperties(11, FlxObject.ANY);
+		tilemap.setTileProperties(12, FlxObject.ANY);
+		FlxG.worldBounds.set(0, 0, 3000, 240);
+		
+		loader.loadEntities(entityCreator, "Enemy1");
 		
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		cantVidas = Reg.cantVidasMax;
@@ -51,15 +59,28 @@ class PlayState extends FlxState
 		fondo = new FlxSprite(0, 0, AssetPaths.Background__png);
 		fondo.velocity.x = 10;
 		add(fondo);
-		player = new Player(null, null, null, balasJugador);
+		player = new Player(null, 100, null, balasJugador);
 		add(tilemap);
 		add(player);
+		add(enemyGroup);
+	}
+	
+	private function entityCreator(entityName:String, entityData:Xml) 
+	{
+		var x:Int = Std.parseInt(entityData.get("x"));
+		var y:Int = Std.parseInt(entityData.get("y"));
 		
+		var e1:Enemy1 = new Enemy1();
+		e1.x = x;
+		e1.y = y;
+		
+		enemyGroup.add(e1);
 	}
 
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		FlxG.collide(tilemap, player);//colision con mapa
 	}
 	
 	function playerLose() 

@@ -59,6 +59,7 @@ class Player extends FlxSprite
 			b = new PlayerBala(this.x+10,this.y+10);
 			balasRef.add(b);
 			intervalo = 0;
+			FlxG.sound.play(AssetPaths.shoot__wav);
 		}
 	}
 	

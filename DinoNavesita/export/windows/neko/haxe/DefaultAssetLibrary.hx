@@ -65,6 +65,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
 		
@@ -74,6 +84,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -591,6 +611,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -604,16 +634,36 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/dinonivel.oel", AssetType.TEXT);
 		path.set ("assets/data/dinonivel.oep", "assets/data/dinonivel.oep");
 		type.set ("assets/data/dinonivel.oep", AssetType.TEXT);
+		path.set ("assets/data/levelv2.oep", "assets/data/levelv2.oep");
+		type.set ("assets/data/levelv2.oep", AssetType.TEXT);
+		path.set ("assets/data/levelv2.oel", "assets/data/levelv2.oel");
+		type.set ("assets/data/levelv2.oel", AssetType.TEXT);
+		path.set ("assets/data/floor.png", "assets/data/floor.png");
+		type.set ("assets/data/floor.png", AssetType.IMAGE);
+		path.set ("assets/data/2.png", "assets/data/2.png");
+		type.set ("assets/data/2.png", AssetType.IMAGE);
+		path.set ("assets/data/1.png", "assets/data/1.png");
+		type.set ("assets/data/1.png", AssetType.IMAGE);
+		path.set ("assets/data/3.png", "assets/data/3.png");
+		type.set ("assets/data/3.png", AssetType.IMAGE);
 		path.set ("assets/images/Background.png", "assets/images/Background.png");
 		type.set ("assets/images/Background.png", AssetType.IMAGE);
 		path.set ("assets/images/Dinopianito.png", "assets/images/Dinopianito.png");
 		type.set ("assets/images/Dinopianito.png", AssetType.IMAGE);
 		path.set ("assets/images/dinoshot.png", "assets/images/dinoshot.png");
 		type.set ("assets/images/dinoshot.png", AssetType.IMAGE);
-		path.set ("assets/images/floor.png", "assets/images/floor.png");
-		type.set ("assets/images/floor.png", AssetType.IMAGE);
 		path.set ("assets/images/FRUTITA.png", "assets/images/FRUTITA.png");
 		type.set ("assets/images/FRUTITA.png", AssetType.IMAGE);
+		path.set ("assets/images/option.png", "assets/images/option.png");
+		type.set ("assets/images/option.png", AssetType.IMAGE);
+		path.set ("assets/images/YEE2.png", "assets/images/YEE2.png");
+		type.set ("assets/images/YEE2.png", AssetType.IMAGE);
+		path.set ("assets/images/YEE3.png", "assets/images/YEE3.png");
+		type.set ("assets/images/YEE3.png", AssetType.IMAGE);
+		path.set ("assets/images/YEE.png", "assets/images/YEE.png");
+		type.set ("assets/images/YEE.png", AssetType.IMAGE);
+		path.set ("assets/music/shoot.wav", "assets/music/shoot.wav");
+		type.set ("assets/music/shoot.wav", AssetType.SOUND);
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
 		className.set ("flixel/sounds/flixel.ogg", __ASSET__flixel_sounds_flixel_ogg);
@@ -637,6 +687,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/data/dinonivel.oep";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/levelv2.oep";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+		id = "assets/data/levelv2.oel";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+		id = "assets/data/floor.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/data/2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/data/1.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/data/3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/Background.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -646,12 +714,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/dinoshot.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/floor.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
 		id = "assets/images/FRUTITA.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/option.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/YEE2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/YEE3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/YEE.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/music/shoot.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
 		id = "flixel/sounds/beep.ogg";
 		path.set (id, id);
 		
@@ -693,6 +773,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1443,6 +1533,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
@@ -1452,6 +1552,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -30,20 +30,64 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("assets/data/data-goes-here.txt");
+		urls.push ("assets/data/dinonivel.oel");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/images/images-go-here.txt");
+		urls.push ("assets/data/dinonivel.oep");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/music/music-goes-here.txt");
+		urls.push ("assets/data/levelv2.oep");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/sounds/sounds-go-here.txt");
+		urls.push ("assets/data/floor.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/data/levelv2.oel");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/Background.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Dinopianito.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/dinoshot.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/floor.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/FRUTITA.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/option.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/YEE.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/YEE2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/YEE3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/music/shoot.wav");
+		types.push (lime.Assets.AssetType.SOUND);
 		
 		
 		urls.push ("flixel/sounds/beep.ogg");
@@ -131,7 +175,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "41",
+			build: "204",
 			company: "ChikoritasTeam",
 			file: "DinoNavesita",
 			fps: 60,
