@@ -14,11 +14,12 @@ class Player extends FlxSprite
 {
 	private var misil:Bool;
 	private var escudo:Bool;
-	private var boost:Bool;
 	private var vidas:Int;
 	private var velocidadMin:Int;
 	private var b:PlayerBala;
 	private var intervalo:Float;
+	private var velocidadAdicionalX:Int;
+	private var velocidadAdicionalY:Int;
 	var balasRef:FlxTypedGroup<PlayerBala>;
 	
 	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset,balas:FlxTypedGroup<PlayerBala>) 
@@ -30,11 +31,10 @@ class Player extends FlxSprite
 		vidas = 3;
 		misil = false;
 		escudo = false;
-		boost = false;
 		balasRef = balas;
 		intervalo = 0;
-		//Reemplaza a velocity.x = 0 ya que se mueve a la velocidad de la camara.
 		velocidadMin = Reg.velocidadCamara;
+		quitarBoost();
 		FlxG.state.add(balasRef);
 	}
 	
@@ -66,10 +66,6 @@ class Player extends FlxSprite
 	public function tieneMisil():Bool
 	{
 		return misil;
-	}
-	public function tieneBoost():Bool
-	{
-		return boost;
 	}
 	public function tieneEscudo():Bool
 	{
@@ -104,13 +100,13 @@ class Player extends FlxSprite
 		}
 		
 		if (FlxG.keys.pressed.RIGHT) 
-			velocity.x += Reg.velocidadX;
+			velocity.x += velocidadAdicionalX;
 		if (FlxG.keys.pressed.LEFT) 
-			velocity.x -= Reg.velocidadX;
+			velocity.x -= velocidadAdicionalX;
 		if (FlxG.keys.pressed.DOWN) 
-			velocity.y = Reg.velocidadY;
+			velocity.y = velocidadAdicionalY;
 		if (FlxG.keys.pressed.UP) 
-			velocity.y = -Reg.velocidadY;
+			velocity.y = -velocidadAdicionalY;
 		
 		OOB();
 	}
@@ -125,5 +121,25 @@ class Player extends FlxSprite
 			this.x = FlxG.camera.scroll.x + FlxG.camera.width - this.width;
 		if (this.y > FlxG.camera.scroll.y + FlxG.camera.height- this.height)
 			this.y = FlxG.camera.scroll.y + FlxG.camera.height - this.height;
+	}
+	
+	public function aplicarBoost():Void
+	{
+		velocidadAdicionalX = Reg.velocidadX + 30;
+		velocidadAdicionalY = Reg.velocidadY + 30;
+	}
+	
+	public function quitarBoost():Void
+	{
+		velocidadAdicionalX = Reg.velocidadX;
+		velocidadAdicionalY = Reg.velocidadY;
+	}
+	public function obtenerVelX():Int
+	{
+		return velocidadAdicionalX;
+	}
+	public function obtenerVelY():Int
+	{
+		return velocidadAdicionalY;
 	}
 }

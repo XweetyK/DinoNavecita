@@ -1,4 +1,5 @@
 package;
+import entities.Compa;
 import entities.Enemy1;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -23,6 +24,8 @@ class PlayState extends FlxState
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
 	var enemyGroup:FlxTypedGroup<Enemy1>;
+	private var compa1:Compa;
+	private var compa2:Compa;
 	
 	override public function create():Void
 	{
@@ -62,6 +65,10 @@ class PlayState extends FlxState
 		player = new Player(null, 100, null, balasJugador);
 		add(tilemap);
 		add(player);
+		compa1 = new Compa(player,balasJugador);
+		compa2 = new Compa(compa1,balasJugador);
+		add(compa1);
+		add(compa2);
 		add(enemyGroup);
 	}
 	
