@@ -21,27 +21,24 @@ class PlayerBala extends FlxSprite
 		velocity.x = Reg.velocidadCamara + Reg.velocidadBalaX;
 		
 		var r:FlxRandom = new FlxRandom();
-		velocity.y = r.float( -40, 40);
+		velocity.y = r.float( -Reg.fireInacuraccy, Reg.fireInacuraccy);
 		
 	}
 	
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		
+		BalaColision();
 	}
 	
-	public function BalaColision():Bool
+	public function BalaColision():Void
 	{
-	if (this.x < FlxG.camera.scroll.x || this.y < FlxG.camera.scroll.y || this.x > FlxG.camera.scroll.x + FlxG.camera.width - this.width || this.y > FlxG.camera.scroll.y + FlxG.camera.height- this.height) 
-	{
-		return true;
-	}
-	else
-	{
-		return false;
+		if (this.x < FlxG.camera.scroll.x || this.y < FlxG.camera.scroll.y || this.x > FlxG.camera.scroll.x + FlxG.camera.width - this.width || this.y > FlxG.camera.scroll.y + FlxG.camera.height- this.height) 
+		{
+			this.destroy();
+		}
 	}
 	
-	}
+	
 	
 }

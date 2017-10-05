@@ -54,7 +54,7 @@ class Player extends FlxSprite
 	
 	function disparar() 
 	{
-		if (FlxG.keys.pressed.SPACE)
+		if (FlxG.keys.pressed.Z)
 		{
 			b = new PlayerBala(this.x+10,this.y+10);
 			balasRef.add(b);
