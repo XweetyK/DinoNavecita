@@ -26,6 +26,7 @@ class PlayState extends FlxState
 	var enemyGroup:FlxTypedGroup<Enemy1>;
 	private var compa1:Compa;
 	private var compa2:Compa;
+	private var cuentaCompa:Int;
 	
 	override public function create():Void
 	{
@@ -56,6 +57,7 @@ class PlayState extends FlxState
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		cantVidas = Reg.cantVidasMax;
 		gameOver = false;
+		cuentaCompa = 0;
 		guide = new GuiaCamara(FlxG.width / 2, FlxG.height / 2);
 		add(guide);
 		FlxG.camera.follow(guide);
@@ -65,10 +67,6 @@ class PlayState extends FlxState
 		player = new Player(null, 100, null, balasJugador);
 		add(tilemap);
 		add(player);
-		compa1 = new Compa(player,balasJugador);
-		compa2 = new Compa(compa1,balasJugador);
-		add(compa1);
-		add(compa2);
 		add(enemyGroup);
 	}
 	
@@ -103,5 +101,27 @@ class PlayState extends FlxState
 		{
 			gameOver = true;
 		}
+	}
+	
+	function ponerCompa():Void
+	{
+		switch (cuentaCompa) 
+		{
+			case 0:
+				compa1 = new Compa(player,balasJugador);
+				add(compa1);
+			case 1:
+				compa2 = new Compa(compa1,balasJugador);
+				add(compa2);
+			default:
+		}
+		cuentaCompa++;
+	}
+	
+	function perderCompa():Void
+	{
+		remove(compa1);
+		remove(compa2);
+		cuentaCompa = 0;
 	}
 }
