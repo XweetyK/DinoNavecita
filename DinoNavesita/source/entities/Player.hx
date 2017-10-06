@@ -133,6 +133,18 @@ class Player extends FlxSprite
 			this.y = FlxG.camera.scroll.y + FlxG.camera.height - this.height;
 	}
 	
+	
+	public function aplicarMisiles():Void
+	{
+		misil = true;
+	}
+	
+	public function quitarMisiles():Void
+	{
+		misil = false;
+	}
+	
+	
 	public function aplicarBoost():Void
 	{
 		velocidadAdicionalX = Reg.velocidadX + 30;

@@ -15,7 +15,7 @@ class Reg
 	static inline public var velocidadY:Int = 135;
 	static inline public var velocidadX:Int = 75;
 	static inline public var fireRate:Float = 0.2;
-	static inline public var fireInacuraccy:Float = 10;
+	static inline public var fireInacuraccy:Float = 15;
 	//PlayerBala
 	static inline public var velocidadBalaX:Int = 300;
 	

@@ -102,7 +102,35 @@ class PlayState extends FlxState
 		}
 		if (FlxG.keys.justPressed.S) 
 		{
-			poder = 0;
+			if (poder == 1)
+			{
+				player.aplicarBoost();
+				poder = 0;
+			}
+			else
+			{
+				if (poder == 2)
+				{
+					player.aplicarEscudo();
+					poder = 0;
+				}
+				else
+				{
+					if (poder == 3)
+					{
+						ponerCompa();
+						poder = 0;
+					}
+					else
+					{
+						if (poder == 4)
+						{
+							player.aplicarMisiles();
+							poder = 0;
+						}
+					}
+				}
+			}	
 		}
 	}
 
