@@ -107,6 +107,10 @@ class PlayState extends FlxState
 			}
 		}
 		
+		testearPoder();
+	}
+	function testearPoder():Void
+	{
 		if (FlxG.keys.justPressed.A) 
 		{
 			poder++;
@@ -145,11 +149,6 @@ class PlayState extends FlxState
 		}
 	}
 	
-	function ganaPoder():Void
-	{
-		poder++;
-	}
-
 	function playerLose():Void
 	{
 		player.x = 1;
