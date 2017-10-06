@@ -1,4 +1,5 @@
 package;
+import flixel.FlxState;
 import entities.Compa;
 import entities.Enemy;
 import entities.Enemy1;
@@ -18,6 +19,7 @@ import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import entities.Misil;
 import entities.Powerup;
+import flixel.text.FlxText;
 
 class PlayState extends FlxState
 {
@@ -66,6 +68,9 @@ class PlayState extends FlxState
 		loader.loadEntities(entityCreator, "Enemy1");
 		loader.loadEntities(entity2Creator, "Enemy2");
 		loader.loadEntities(entity3Creator, "Enemy3");
+		
+		var text = new FlxText (350, 15, 480, "la version funcional viene en el DLC", 12);
+		text.velocity.x = -300;
 
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
@@ -88,6 +93,9 @@ class PlayState extends FlxState
 		add(medidor);
 		add(player);
 		add(enemyGroup);
+		add(text);
+		
+		FlxG.sound.play(AssetPaths.mercury__wav);
 	}
 
 	private function entityCreator(entityName:String, entityData:Xml)
@@ -120,9 +128,11 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		FlxG.overlap(tilemap, player);//colision con mapa
+		if(FlxG.collide(tilemap, player))
+		{
+			playerLose();
+		}//colision con mapa
 		medidor.contar(poder);
-
 		//colisiones
 		//player y enemigo
 		for (i in 0 ... enemyGroup.members.length -1) 
@@ -143,15 +153,15 @@ class PlayState extends FlxState
 			for (j in 0 ... balasJugador.members.length - 1) 
 			{
 				var bala:PlayerBala = balasJugador.members[j];
-				if (FlxG.overlap(loco,bala)) 
+				if (FlxG.collide(loco,bala)) 
 				{
+					FlxG.sound.play(AssetPaths.yee__wav);
 					enemyGroup.remove(loco, true);
 					balasJugador.remove(bala, true);
 				}
 			}
 		}
 		balasJugador.forEach(chequearBala,false);
-		
 		
 		testearPoder();
 	}
@@ -220,10 +230,12 @@ class PlayState extends FlxState
 			{
 				poder = 1;
 			}
+			FlxG.sound.play(AssetPaths.death__wav);
 		}
 		if (cantVidas <= 0)
 		{
-			FlxG.resetState();
+			var gameOver:QgameOver = new QgameOver();
+			FlxG.switchState(gameOver);
 		}
 	}
 

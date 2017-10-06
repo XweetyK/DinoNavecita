@@ -42,6 +42,8 @@ class AssetData {
 			type.set ("assets/images/enemyshot.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/FRUTITA.png", "assets/images/FRUTITA.png");
 			type.set ("assets/images/FRUTITA.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/gameover.png", "assets/images/gameover.png");
+			type.set ("assets/images/gameover.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/option.png", "assets/images/option.png");
 			type.set ("assets/images/option.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/portada.png", "assets/images/portada.png");
@@ -64,8 +66,18 @@ class AssetData {
 			type.set ("assets/images/YEE2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/YEE3.png", "assets/images/YEE3.png");
 			type.set ("assets/images/YEE3.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/music/death.wav", "assets/music/death.wav");
+			type.set ("assets/music/death.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/music/menu.wav", "assets/music/menu.wav");
+			type.set ("assets/music/menu.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/music/mercury.wav", "assets/music/mercury.wav");
+			type.set ("assets/music/mercury.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/music/relife.wav", "assets/music/relife.wav");
+			type.set ("assets/music/relife.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/shoot.wav", "assets/music/shoot.wav");
 			type.set ("assets/music/shoot.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/music/yee.wav", "assets/music/yee.wav");
+			type.set ("assets/music/yee.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("flixel/sounds/beep.ogg", "flixel/sounds/beep.ogg");
 			type.set ("flixel/sounds/beep.ogg", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("flixel/sounds/flixel.ogg", "flixel/sounds/flixel.ogg");

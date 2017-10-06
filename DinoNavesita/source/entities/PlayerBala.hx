@@ -22,8 +22,6 @@ class PlayerBala extends FlxSprite
 		{
 			velocity.x = Reg.velocidadCamara + Reg.velocidadBalaX;
 		}
-		var r:FlxRandom = new FlxRandom();
-		velocity.y = r.float( -Reg.fireInacuraccy, Reg.fireInacuraccy);
 		
 	}
 	

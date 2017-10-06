@@ -22,7 +22,7 @@
   </Enemy1>
   <Enemy2>
     <Enemy2 id="0" x="800" y="32" />
-    <Enemy2 id="1" x="864" y="32" />
+    <Enemy2 id="1" x="864" y="64" />
     <Enemy2 id="2" x="960" y="96" />
     <Enemy2 id="3" x="1024" y="96" />
     <Enemy2 id="4" x="832" y="160" />
