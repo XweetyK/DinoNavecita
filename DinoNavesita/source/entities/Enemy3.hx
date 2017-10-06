@@ -27,7 +27,6 @@ class Enemy3 extends FlxSprite
 		{
 			powerupRef.add(new Powerup(x, y));
 		}
-		FlxG.state.remove(this);
 	}
 	
 }

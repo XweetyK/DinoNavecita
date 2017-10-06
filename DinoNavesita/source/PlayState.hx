@@ -79,6 +79,7 @@ class PlayState extends FlxState
 		cuentaCompa = 0;
 		guide = new GuiaCamara(FlxG.width / 2, FlxG.height / 2);
 		add(guide);
+		add(powerups);
 		FlxG.camera.follow(guide);
 		fondo = new FlxSprite(0, 0, AssetPaths.Background__png);
 		fondo.velocity.x = 10;
@@ -127,12 +128,45 @@ class PlayState extends FlxState
 		FlxG.overlap(tilemap, player);//colision con mapa
 		medidor.contar(poder);
 		
-		for (i in 0...enemyGroup.members.length-1)
+		for (i in 0...enemyGroup.members.length -1)
 		{
 			if (FlxG.overlap(player, enemyGroup.members[i]))
 			{
-			enemyGroup.members[i].destroy();
-			playerLose();
+				enemyGroup.members[i].destroy();
+				playerLose();
+			}
+			for(i in 0...balasJugador.members.length)
+			if (FlxG.overlap(balasJugador.members[i], enemyGroup.members[i]))
+			{
+				enemyGroup.members[i].destroy();
+			}
+		}
+		for (i in 0...enemy2Group.members.length)
+		{
+			if (FlxG.overlap(player, enemy2Group.members[i]))
+			{
+				enemy2Group.members[i].destroy();
+				playerLose();
+			}
+			for(i in 0...balasJugador.members.length)
+			if (FlxG.overlap(balasJugador.members[i], enemy2Group.members[i]))
+			{
+				enemy2Group.members[i].destroy();
+			}
+		}
+		for (i in 0...enemy3Group.members.length)
+		{
+			if (FlxG.overlap(player, enemy3Group.members[i]))
+			{
+				enemy3Group.members[i].destroy();
+				playerLose();
+			}
+			for (i in 0...balasJugador.members.length)
+			{
+				if (FlxG.overlap(balasJugador.members[i], enemy3Group.members[i]))
+				{
+				enemy3Group.members[i].destroy();
+				}
 			}
 		}
 		
@@ -167,7 +201,7 @@ class PlayState extends FlxState
 					}
 					else
 					{
-						if (poder == 4)
+						if (poder >= 4)
 						{
 							player.aplicarMisiles();
 							poder = 0;
