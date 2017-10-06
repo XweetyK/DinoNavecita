@@ -12,14 +12,19 @@ import flixel.FlxG;
 class PlayerBala extends FlxSprite 
 {
 
-	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, detenido:Bool) 
 	{
 		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.dinoshot__png, true, 16, 16);
 		animation.add("Brillo", [0, 1, 2], 12, true);
 		animation.play("Brillo");
-		velocity.x = Reg.velocidadCamara + Reg.velocidadBalaX;
-		
+		if (detenido) 
+		{
+			velocity.x = Reg.velocidadBalaX;
+		} else 
+		{
+			velocity.x = Reg.velocidadCamara + Reg.velocidadBalaX;
+		}
 		var r:FlxRandom = new FlxRandom();
 		velocity.y = r.float( -Reg.fireInacuraccy, Reg.fireInacuraccy);
 		

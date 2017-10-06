@@ -19,7 +19,7 @@ class PlayState extends FlxState
 	private var gameOver:Bool;
 	private var guide:GuiaCamara; //guía de la camara.
 	private var player:Player;
-	private var balasJugador:FlxTypedGroup<PlayerBala>; 
+	private var balasJugador:FlxTypedGroup<PlayerBala>;
 	private var a:PlayerBala;
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
@@ -27,13 +27,14 @@ class PlayState extends FlxState
 	private var compa1:Compa;
 	private var compa2:Compa;
 	private var cuentaCompa:Int;
-	
+	private var velGlobal:Float;
+
 	override public function create():Void
 	{
 		super.create();
-		
+
 		enemyGroup = new FlxTypedGroup<Enemy1>();
-		
+
 		//Mapa de Ogmo
 		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.levelv2__oel);
 		tilemap = loader.loadTilemap(AssetPaths.floor__png, 30, 30, "Tileset");
@@ -52,9 +53,11 @@ class PlayState extends FlxState
 		tilemap.setTileProperties(12, FlxObject.ANY);
 		FlxG.worldBounds.set(0, 0, 3000, 240);
 		FlxG.mouse.visible = false;
-		
+
+		velGlobal = Reg.velocidadCamara;
+
 		loader.loadEntities(entityCreator, "Enemy1");
-		
+
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		cantVidas = Reg.cantVidasMax;
 		gameOver = false;
@@ -70,16 +73,16 @@ class PlayState extends FlxState
 		add(player);
 		add(enemyGroup);
 	}
-	
-	private function entityCreator(entityName:String, entityData:Xml) 
+
+	private function entityCreator(entityName:String, entityData:Xml)
 	{
 		var x:Int = Std.parseInt(entityData.get("x"));
 		var y:Int = Std.parseInt(entityData.get("y"));
-		
+
 		var e1:Enemy1 = new Enemy1();
 		e1.x = x;
 		e1.y = y;
-		
+
 		enemyGroup.add(e1);
 	}
 
@@ -88,41 +91,55 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		FlxG.collide(tilemap, player);//colision con mapa
 	}
-	
-	function playerLose() 
+
+	function playerLose()
 	{
-		if (player.tieneEscudo()) 
+		if (player.tieneEscudo())
 		{
 			player.pierdeEscudo();
-		} else if (cantVidas > 0) 
+		}
+		else if (cantVidas > 0)
 		{
 			cantVidas--;
 		}
-		if (cantVidas <= 0) 
+		if (cantVidas <= 0)
 		{
 			gameOver = true;
 		}
 	}
-	
+
 	function ponerCompa():Void
 	{
-		switch (cuentaCompa) 
+		switch (cuentaCompa)
 		{
 			case 0:
 				compa1 = new Compa(player,balasJugador);
 				add(compa1);
+				cuentaCompa++;
 			case 1:
 				compa2 = new Compa(compa1,balasJugador);
 				add(compa2);
+				cuentaCompa++;
 			default:
 		}
-		cuentaCompa++;
 	}
-	
+
 	function perderCompa():Void
 	{
 		remove(compa1);
 		remove(compa2);
 		cuentaCompa = 0;
+	}
+
+	function bastaChicos():Void
+	{
+		if (FlxG.camera.scroll.x + FlxG.camera.width == 2740)
+		{
+			guide.detener();
+			fondo.velocity.x = 0;
+			player.detener();
+			compa1.detener();
+			compa2.detener();
+		}
 	}
 }

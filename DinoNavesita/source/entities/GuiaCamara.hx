@@ -17,5 +17,9 @@ class GuiaCamara extends FlxSprite
 		velocity.x = Reg.velocidadCamara;
 		
 	}
+	public function detener():Void
+	{
+		velocity.x = 0;
+	}
 	
 }

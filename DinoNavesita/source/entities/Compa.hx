@@ -28,6 +28,7 @@ class Compa extends Player
 	}
 	override private function movimiento():Void
 	{
+		
 		velocidadAdicionalX = lider.obtenerVelX();
 		velocidadAdicionalY = lider.obtenerVelY();
 		

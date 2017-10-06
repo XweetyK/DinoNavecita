@@ -21,6 +21,7 @@ class Player extends FlxSprite
 	private var velocidadAdicionalX:Int;
 	private var velocidadAdicionalY:Int;
 	var balasRef:FlxTypedGroup<PlayerBala>;
+	private var detenido:Bool;
 	
 	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset,balas:FlxTypedGroup<PlayerBala>) 
 	{
@@ -31,6 +32,7 @@ class Player extends FlxSprite
 		vidas = 3;
 		misil = false;
 		escudo = false;
+		detenido = false;
 		balasRef = balas;
 		intervalo = 0;
 		velocidadMin = Reg.velocidadCamara;
@@ -52,11 +54,11 @@ class Player extends FlxSprite
 		}
 	}
 	
-	function disparar() 
+	public function disparar() 
 	{
 		if (FlxG.keys.pressed.Z)
 		{
-			b = new PlayerBala(this.x+10,this.y+10);
+			b = new PlayerBala(this.x+10,this.y+10,velocidadMin, detenido);
 			balasRef.add(b);
 			intervalo = 0;
 			FlxG.sound.play(AssetPaths.shoot__wav);
@@ -141,5 +143,10 @@ class Player extends FlxSprite
 	public function obtenerVelY():Int
 	{
 		return velocidadAdicionalY;
+	}
+	public function detener():Void
+	{
+		velocidadMin = 0;
+		detenido = true;
 	}
 }
