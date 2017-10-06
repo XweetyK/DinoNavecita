@@ -42,6 +42,7 @@ class PlayState extends FlxState
 	private var poder:Int;
 	private var playerVidas:FlxText;
 	private var playerScore:FlxText;
+	private var r:FlxRandom;
 
 	override public function create():Void
 	{
@@ -79,9 +80,9 @@ class PlayState extends FlxState
 		score = 0;
 		gameOver = false;
 		cuentaCompa = 0;
+		r = new FlxRandom();
 		guide = new GuiaCamara(FlxG.width / 2, FlxG.height / 2);
 		add(guide);
-		r = new FlxRandom();
 		FlxG.camera.follow(guide);
 		fondo = new FlxSprite(0, 0, AssetPaths.Background__png);
 		fondo.velocity.x = 10;
@@ -164,6 +165,7 @@ class PlayState extends FlxState
 				{
 					FlxG.sound.play(AssetPaths.yee__wav);
 					addPuntaje(loco.suValor());
+					dropear(loco.x, loco.y);
 					enemyGroup.remove(loco, true);
 					balasJugador.remove(bala, true);
 				}
@@ -175,6 +177,7 @@ class PlayState extends FlxState
 				{
 					FlxG.sound.play(AssetPaths.yee__wav);
 					addPuntaje(loco.suValor());
+					dropear(loco.x, loco.y);
 					enemyGroup.remove(loco, true);
 					misilesJugador.remove(misil, true);
 				}
