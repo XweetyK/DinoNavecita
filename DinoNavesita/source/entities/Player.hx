@@ -58,7 +58,7 @@ class Player extends FlxSprite
 	{
 		if (FlxG.keys.pressed.Z)
 		{
-			b = new PlayerBala(this.x+10,this.y+10,velocidadMin, detenido);
+			b = new PlayerBala(this.x+10,this.y+10, detenido);
 			balasRef.add(b);
 			intervalo = 0;
 			FlxG.sound.play(AssetPaths.shoot__wav);

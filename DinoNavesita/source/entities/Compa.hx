@@ -25,7 +25,6 @@ class Compa extends Player
 		this.pixelPerfectPosition = false;
 		diferenciaX = lider.width - this.width;
 		diferenciaY = lider.height - this.height;
-		this.
 	}
 	override private function movimiento():Void
 	{
