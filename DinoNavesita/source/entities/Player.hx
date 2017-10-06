@@ -1,11 +1,13 @@
 package entities;
 
+import flixel.FlxBasic.FlxType;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import entities.Reg;
 import entities.PlayerBala;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import entities.Misil;
 /**
  * ...
  * @author ChikoritasTeam
@@ -17,13 +19,15 @@ class Player extends FlxSprite
 	private var vidas:Int;
 	private var velocidadMin:Int;
 	private var b:PlayerBala;
+	private var m:Misil;
 	private var intervalo:Float;
 	private var velocidadAdicionalX:Int;
 	private var velocidadAdicionalY:Int;
 	var balasRef:FlxTypedGroup<PlayerBala>;
+	var misilRef:FlxTypedGroup<Misil>;
 	private var detenido:Bool;
 	
-	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset,balas:FlxTypedGroup<PlayerBala>) 
+	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset,balas:FlxTypedGroup<PlayerBala>,?misiles:FlxTypedGroup<Misil>) 
 	{
 		super(X, Y, simpleGraphic);
 		loadGraphic(AssetPaths.Dinopianito__png, true, 32, 32);
@@ -34,10 +38,12 @@ class Player extends FlxSprite
 		escudo = false;
 		detenido = false;
 		balasRef = balas;
+		misilRef = misiles;
 		intervalo = 0;
 		velocidadMin = Reg.velocidadCamara;
 		quitarBoost();
 		FlxG.state.add(balasRef);
+		FlxG.state.add(misilRef);
 	}
 	
 	override public function update(elapsed:Float):Void
@@ -61,6 +67,11 @@ class Player extends FlxSprite
 			b = new PlayerBala(this.x+10,this.y+10, detenido);
 			balasRef.add(b);
 			intervalo = 0;
+			if (tieneMisil())
+			{
+			m = new Misil(this.x,this.y + this.height , detenido);
+			misilRef.add(m);
+			}
 			FlxG.sound.play(AssetPaths.shoot__wav);
 		}
 	}
@@ -75,10 +86,7 @@ class Player extends FlxSprite
 	}
 	public function pierdeEscudo():Void
 	{
-		if (escudo) 
-		{
-			escudo = false;
-		}
+		escudo = false;
 	}
 	private function movimiento():Void
 	{
@@ -131,6 +139,10 @@ class Player extends FlxSprite
 		velocidadAdicionalY = Reg.velocidadY + 30;
 	}
 	
+	public function aplicarEscudo():Void
+	{
+		escudo = true;
+	}
 	public function quitarBoost():Void
 	{
 		velocidadAdicionalX = Reg.velocidadX;

@@ -12,6 +12,7 @@ import entities.PlayerBala;
 import flixel.FlxObject;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import entities.Misil;
 
 class PlayState extends FlxState
 {
@@ -20,6 +21,7 @@ class PlayState extends FlxState
 	private var guide:GuiaCamara; //guía de la camara.
 	private var player:Player;
 	private var balasJugador:FlxTypedGroup<PlayerBala>;
+	private var misilesJugador:FlxTypedGroup<Misil>;
 	private var a:PlayerBala;
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
@@ -32,9 +34,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-
 		enemyGroup = new FlxTypedGroup<Enemy1>();
-
 		//Mapa de Ogmo
 		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.levelv2__oel);
 		tilemap = loader.loadTilemap(AssetPaths.floor__png, 30, 30, "Tileset");
@@ -53,12 +53,11 @@ class PlayState extends FlxState
 		tilemap.setTileProperties(12, FlxObject.ANY);
 		FlxG.worldBounds.set(0, 0, 3000, 240);
 		FlxG.mouse.visible = false;
-
 		velGlobal = Reg.velocidadCamara;
-
 		loader.loadEntities(entityCreator, "Enemy1");
-
 		balasJugador = new FlxTypedGroup<PlayerBala>();
+		misilesJugador = new FlxTypedGroup<Misil>();
+		
 		cantVidas = Reg.cantVidasMax;
 		gameOver = false;
 		cuentaCompa = 0;
@@ -68,7 +67,7 @@ class PlayState extends FlxState
 		fondo = new FlxSprite(0, 0, AssetPaths.Background__png);
 		fondo.velocity.x = 10;
 		add(fondo);
-		player = new Player(null, 100, null, balasJugador);
+		player = new Player(null, 100, null, balasJugador,misilesJugador);
 		add(tilemap);
 		add(player);
 		add(enemyGroup);
@@ -104,7 +103,7 @@ class PlayState extends FlxState
 		}
 		if (cantVidas <= 0)
 		{
-			gameOver = true;
+			FlxG.resetState();
 		}
 	}
 
