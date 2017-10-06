@@ -14,6 +14,7 @@ import flixel.FlxObject;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import entities.Misil;
+import entities.Powerup;
 
 class PlayState extends FlxState
 {
@@ -23,6 +24,7 @@ class PlayState extends FlxState
 	private var player:Player;
 	private var balasJugador:FlxTypedGroup<PlayerBala>;
 	private var misilesJugador:FlxTypedGroup<Misil>;
+	private var powerups:FlxTypedGroup<Powerup>;
 	private var a:PlayerBala;
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
@@ -60,6 +62,7 @@ class PlayState extends FlxState
 		loader.loadEntities(entityCreator, "Enemy1");
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
+		powerups = new FlxTypedGroup<Powerup>();
 		
 		cantVidas = Reg.cantVidasMax;
 		gameOver = false;
@@ -83,18 +86,16 @@ class PlayState extends FlxState
 	{
 		var x:Int = Std.parseInt(entityData.get("x"));
 		var y:Int = Std.parseInt(entityData.get("y"));
-
-		var e1:Enemy1 = new Enemy1();
+		var e1:Enemy1 = new Enemy1(powerups);
 		e1.x = x;
 		e1.y = y;
-
 		enemyGroup.add(e1);
 	}
 
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		FlxG.collide(tilemap, player);//colision con mapa
+		FlxG.overlap(tilemap, player);//colision con mapa
 		medidor.contar(poder);
 		if (FlxG.keys.justPressed.A) 
 		{
@@ -133,8 +134,13 @@ class PlayState extends FlxState
 			}	
 		}
 	}
+	
+	function ganaPoder():Void
+	{
+		poder++;
+	}
 
-	function playerLose()
+	function playerLose():Void
 	{
 		if (player.tieneEscudo())
 		{
