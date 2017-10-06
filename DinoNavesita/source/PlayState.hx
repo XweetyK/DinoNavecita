@@ -97,6 +97,16 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		FlxG.overlap(tilemap, player);//colision con mapa
 		medidor.contar(poder);
+		
+		for (i in 0...enemyGroup.members.length-1)
+		{
+			if (FlxG.overlap(player, enemyGroup.members[i]))
+			{
+			enemyGroup.members[i].destroy();
+			playerLose();
+			}
+		}
+		
 		if (FlxG.keys.justPressed.A) 
 		{
 			poder++;
@@ -142,6 +152,8 @@ class PlayState extends FlxState
 
 	function playerLose():Void
 	{
+		player.x = 1;
+		player.y = camera.height / 2;
 		if (player.tieneEscudo())
 		{
 			player.pierdeEscudo();
