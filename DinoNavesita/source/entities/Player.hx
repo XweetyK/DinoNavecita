@@ -26,6 +26,7 @@ class Player extends FlxSprite
 	var balasRef:FlxTypedGroup<PlayerBala>;
 	var misilRef:FlxTypedGroup<Misil>;
 	private var detenido:Bool;
+	private var poder:Int;
 	
 	public function new(?X:Float=0, ?Y:Float=0,?simpleGraphic:FlxGraphicAsset,balas:FlxTypedGroup<PlayerBala>,?misiles:FlxTypedGroup<Misil>) 
 	{
@@ -40,6 +41,7 @@ class Player extends FlxSprite
 		balasRef = balas;
 		misilRef = misiles;
 		intervalo = 0;
+		poder = 0;
 		velocidadMin = Reg.velocidadCamara;
 		quitarBoost();
 		FlxG.state.add(balasRef);
@@ -59,7 +61,18 @@ class Player extends FlxSprite
 		intervalo += elapsed;	
 		}
 	}
-	
+	public function ganaPoder():Void
+	{
+		poder++;
+	}
+	public function pierdePoder():Void
+	{
+		poder = 0;
+	}
+	public function getPoder():Int
+	{
+		return poder;
+	}
 	public function disparar() 
 	{
 		if (FlxG.keys.pressed.Z)
