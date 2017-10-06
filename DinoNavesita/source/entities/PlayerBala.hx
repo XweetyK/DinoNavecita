@@ -1,6 +1,7 @@
 package entities;
 
 import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxRandom;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import entities.Reg;
@@ -8,7 +9,6 @@ import flixel.FlxG;
 
 class PlayerBala extends FlxSprite 
 {
-
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, detenido:Bool) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -30,14 +30,16 @@ class PlayerBala extends FlxSprite
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		BalaColision();
 	}
 	
-	public function BalaColision():Void
+	public function balaColision():Bool
 	{
 		if (this.x < FlxG.camera.scroll.x || this.y < FlxG.camera.scroll.y || this.x > FlxG.camera.scroll.x + FlxG.camera.width - this.width || this.y > FlxG.camera.scroll.y + FlxG.camera.height- this.height) 
 		{
-			this.destroy();
+			return true;
+		} else 
+		{
+			return false;
 		}
 	}
 	

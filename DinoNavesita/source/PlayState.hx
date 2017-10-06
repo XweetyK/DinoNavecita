@@ -1,5 +1,6 @@
 package;
 import entities.Compa;
+import entities.Enemy;
 import entities.Enemy1;
 import entities.Enemy2;
 import entities.Enemy3;
@@ -30,22 +31,18 @@ class PlayState extends FlxState
 	private var a:PlayerBala;
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
-	var enemyGroup:FlxTypedGroup<Enemy1>;
-	var enemy2Group:FlxTypedGroup<Enemy2>;
-	var enemy3Group:FlxTypedGroup<Enemy3>;
+	var enemyGroup:FlxTypedGroup<Enemy>;
 	private var compa1:Compa;
 	private var compa2:Compa;
 	private var cuentaCompa:Int;
 	private var velGlobal:Float;
 	private var medidor:Medidor;
 	private var poder:Int;
-	
+
 	override public function create():Void
 	{
 		super.create();
-		enemyGroup = new FlxTypedGroup<Enemy1>();
-		enemy2Group = new FlxTypedGroup<Enemy2>();
-		enemy3Group = new FlxTypedGroup<Enemy3>();
+		enemyGroup = new FlxTypedGroup<Enemy>();
 		//Mapa de Ogmo
 		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.levelv2__oel);
 		tilemap = loader.loadTilemap(AssetPaths.floor__png, 30, 30, "Tileset");
@@ -65,15 +62,15 @@ class PlayState extends FlxState
 		FlxG.worldBounds.set(0, 0, 3000, 240);
 		FlxG.mouse.visible = false;
 		velGlobal = Reg.velocidadCamara;
-		
+
 		loader.loadEntities(entityCreator, "Enemy1");
 		loader.loadEntities(entity2Creator, "Enemy2");
 		loader.loadEntities(entity3Creator, "Enemy3");
-		
+
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
 		powerups = new FlxTypedGroup<Powerup>();
-		
+
 		cantVidas = Reg.cantVidasMax;
 		gameOver = false;
 		cuentaCompa = 0;
@@ -91,8 +88,6 @@ class PlayState extends FlxState
 		add(medidor);
 		add(player);
 		add(enemyGroup);
-		add(enemy2Group);
-		add(enemy3Group);
 	}
 
 	private function entityCreator(entityName:String, entityData:Xml)
@@ -110,7 +105,7 @@ class PlayState extends FlxState
 		var y:Int = Std.parseInt(entityData.get("y"));
 		var e2:Enemy2 = new Enemy2(powerups);
 		e2.x = x;
-		enemy2Group.add(e2);
+		enemyGroup.add(e2);
 	}
 	private function entity3Creator(entityName:String, entityData:Xml)
 	{
@@ -119,7 +114,7 @@ class PlayState extends FlxState
 		var e3:Enemy3 = new Enemy3(powerups);
 		e3.x = x;
 		e3.y = y;
-		enemy3Group.add(e3);
+		enemyGroup.add(e3);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -127,58 +122,53 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		FlxG.overlap(tilemap, player);//colision con mapa
 		medidor.contar(poder);
-		
-		for (i in 0...enemyGroup.members.length -1)
+
+		//colisiones
+		//player y enemigo
+		for (i in 0 ... enemyGroup.members.length -1) 
 		{
-			if (FlxG.overlap(player, enemyGroup.members[i]))
+			var loco:Enemy = enemyGroup.members[i];
+			if (FlxG.overlap(player, loco)) 
 			{
-				enemyGroup.members[i].destroy();
 				playerLose();
+				enemyGroup.remove(loco, true);
+				loco.destroy();
 			}
-			for(i in 0...balasJugador.members.length)
-			if (FlxG.overlap(balasJugador.members[i], enemyGroup.members[i]))
-			{
-				enemyGroup.members[i].destroy();
-			}
+			
 		}
-		for (i in 0...enemy2Group.members.length)
+		//bala y enemigo
+		for (i in 0 ... enemyGroup.members.length -1) 
 		{
-			if (FlxG.overlap(player, enemy2Group.members[i]))
+			var loco:Enemy = enemyGroup.members[i];
+			for (j in 0 ... balasJugador.members.length - 1) 
 			{
-				enemy2Group.members[i].destroy();
-				playerLose();
-			}
-			for(i in 0...balasJugador.members.length)
-			if (FlxG.overlap(balasJugador.members[i], enemy2Group.members[i]))
-			{
-				enemy2Group.members[i].destroy();
-			}
-		}
-		for (i in 0...enemy3Group.members.length)
-		{
-			if (FlxG.overlap(player, enemy3Group.members[i]))
-			{
-				enemy3Group.members[i].destroy();
-				playerLose();
-			}
-			for (i in 0...balasJugador.members.length)
-			{
-				if (FlxG.overlap(balasJugador.members[i], enemy3Group.members[i]))
+				var bala:PlayerBala = balasJugador.members[j];
+				if (FlxG.overlap(loco,bala)) 
 				{
-				enemy3Group.members[i].destroy();
+					enemyGroup.remove(loco, true);
+					balasJugador.remove(bala, true);
 				}
 			}
 		}
+		balasJugador.forEach(chequearBala,false);
+		
 		
 		testearPoder();
 	}
+	private function chequearBala(bala:PlayerBala):Void
+	{
+		if (bala.balaColision()) 
+		{
+			balasJugador.remove(bala, true);
+		}
+	}
 	function testearPoder():Void
 	{
-		if (FlxG.keys.justPressed.A) 
+		if (FlxG.keys.justPressed.A)
 		{
 			poder++;
 		}
-		if (FlxG.keys.justPressed.S) 
+		if (FlxG.keys.justPressed.S)
 		{
 			if (poder == 1)
 			{
@@ -208,13 +198,12 @@ class PlayState extends FlxState
 						}
 					}
 				}
-			}	
+			}
 		}
 	}
-	
+
 	function playerLose():Void
 	{
-		
 		if (player.tieneEscudo())
 		{
 			player.pierdeEscudo();
@@ -227,6 +216,10 @@ class PlayState extends FlxState
 			player.quitarMisiles();
 			player.x = 1;
 			player.y = camera.height / 2;
+			if (poder>0) 
+			{
+				poder = 1;
+			}
 		}
 		if (cantVidas <= 0)
 		{

@@ -87,6 +87,9 @@ class Player extends FlxSprite
 	public function pierdeEscudo():Void
 	{
 		escudo = false;
+		loadGraphic(AssetPaths.Dinopianito__png, true, 32, 32);
+		animation.add("fly", [0, 1, 2, 3], 12, true);
+		animation.play("fly");
 	}
 	private function movimiento():Void
 	{
@@ -154,6 +157,9 @@ class Player extends FlxSprite
 	public function aplicarEscudo():Void
 	{
 		escudo = true;
+		loadGraphic(AssetPaths.shield__png, true, 32, 32);
+		animation.add("fly", [0, 1, 2, 3], 12, true);
+		animation.play("fly");
 	}
 	public function quitarBoost():Void
 	{
