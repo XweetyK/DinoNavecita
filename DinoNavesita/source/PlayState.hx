@@ -1,6 +1,8 @@
 package;
 import entities.Compa;
 import entities.Enemy1;
+import entities.Enemy2;
+import entities.Enemy3;
 import entities.Medidor;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -29,6 +31,8 @@ class PlayState extends FlxState
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
 	var enemyGroup:FlxTypedGroup<Enemy1>;
+	var enemy2Group:FlxTypedGroup<Enemy2>;
+	var enemy3Group:FlxTypedGroup<Enemy3>;
 	private var compa1:Compa;
 	private var compa2:Compa;
 	private var cuentaCompa:Int;
@@ -40,6 +44,8 @@ class PlayState extends FlxState
 	{
 		super.create();
 		enemyGroup = new FlxTypedGroup<Enemy1>();
+		enemy2Group = new FlxTypedGroup<Enemy2>();
+		enemy3Group = new FlxTypedGroup<Enemy3>();
 		//Mapa de Ogmo
 		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.levelv2__oel);
 		tilemap = loader.loadTilemap(AssetPaths.floor__png, 30, 30, "Tileset");
@@ -59,7 +65,11 @@ class PlayState extends FlxState
 		FlxG.worldBounds.set(0, 0, 3000, 240);
 		FlxG.mouse.visible = false;
 		velGlobal = Reg.velocidadCamara;
+		
 		loader.loadEntities(entityCreator, "Enemy1");
+		loader.loadEntities(entity2Creator, "Enemy2");
+		loader.loadEntities(entity3Creator, "Enemy3");
+		
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
 		powerups = new FlxTypedGroup<Powerup>();
@@ -80,6 +90,8 @@ class PlayState extends FlxState
 		add(medidor);
 		add(player);
 		add(enemyGroup);
+		add(enemy2Group);
+		add(enemy3Group);
 	}
 
 	private function entityCreator(entityName:String, entityData:Xml)
@@ -90,6 +102,23 @@ class PlayState extends FlxState
 		e1.x = x;
 		e1.y = y;
 		enemyGroup.add(e1);
+	}
+	private function entity2Creator(entityName:String, entityData:Xml)
+	{
+		var x:Int = Std.parseInt(entityData.get("x"));
+		var y:Int = Std.parseInt(entityData.get("y"));
+		var e2:Enemy2 = new Enemy2(powerups);
+		e2.x = x;
+		enemy2Group.add(e2);
+	}
+	private function entity3Creator(entityName:String, entityData:Xml)
+	{
+		var x:Int = Std.parseInt(entityData.get("x"));
+		var y:Int = Std.parseInt(entityData.get("y"));
+		var e3:Enemy3 = new Enemy3(powerups);
+		e3.x = x;
+		e3.y = y;
+		enemy3Group.add(e3);
 	}
 
 	override public function update(elapsed:Float):Void

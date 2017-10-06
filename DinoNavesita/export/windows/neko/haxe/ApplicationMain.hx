@@ -515,7 +515,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "336",
+			build: "4",
 			company: "ChikoritasTeam",
 			file: "DinoNavesita",
 			fps: 60,
