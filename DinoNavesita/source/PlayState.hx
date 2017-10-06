@@ -51,6 +51,7 @@ class PlayState extends FlxState
 		tilemap.setTileProperties(11, FlxObject.ANY);
 		tilemap.setTileProperties(12, FlxObject.ANY);
 		FlxG.worldBounds.set(0, 0, 3000, 240);
+		FlxG.mouse.visible = false;
 		
 		loader.loadEntities(entityCreator, "Enemy1");
 		
