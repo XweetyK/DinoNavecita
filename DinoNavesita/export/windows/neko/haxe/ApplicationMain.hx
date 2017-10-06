@@ -515,7 +515,11 @@ class ApplicationMain {
 		
 		config = {
 			
+<<<<<<< Updated upstream
 			build: "4",
+=======
+			build: "338",
+>>>>>>> Stashed changes
 			company: "ChikoritasTeam",
 			file: "DinoNavesita",
 			fps: 60,

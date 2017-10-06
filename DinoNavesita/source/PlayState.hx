@@ -180,8 +180,7 @@ class PlayState extends FlxState
 	
 	function playerLose():Void
 	{
-		player.x = 1;
-		player.y = camera.height / 2;
+		
 		if (player.tieneEscudo())
 		{
 			player.pierdeEscudo();
@@ -189,6 +188,11 @@ class PlayState extends FlxState
 		else if (cantVidas > 0)
 		{
 			cantVidas--;
+			perderCompa();
+			player.quitarBoost();
+			player.quitarMisiles();
+			player.x = 1;
+			player.y = camera.height / 2;
 		}
 		if (cantVidas <= 0)
 		{
