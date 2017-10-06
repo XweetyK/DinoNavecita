@@ -115,6 +115,7 @@ class PlayState extends FlxState
 		var y:Int = Std.parseInt(entityData.get("y"));
 		var e2:Enemy2 = new Enemy2();
 		e2.x = x;
+		e2.y = y;
 		enemyGroup.add(e2);
 	}
 	private function entity3Creator(entityName:String, entityData:Xml)
