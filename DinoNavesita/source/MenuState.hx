@@ -8,10 +8,19 @@ import flixel.ui.FlxButton;
 
 class MenuState extends FlxState 
 {
+	private var fondo:FlxSprite;
+	private var splash:FlxSprite;
 
 	override public function create():Void
 	{
 		super.create();
+		
+		fondo = new FlxSprite(0, 0, AssetPaths.Background__png);
+		fondo.velocity.x = -10;
+		add(fondo);
+		
+		splash = new FlxSprite(0, 0, AssetPaths.portada__png);
+		add(splash);
 		
 		var init_x:Int = Math.floor(FlxG.width / 2 - 40);
 		var butonNew = new FlxButton(init_x, 175, "Start!", onNew);
