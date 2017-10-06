@@ -16,7 +16,8 @@ class Misil extends FlxSprite
 		this.angle = 270;
 		animation.add("Brillo", [0, 1, 2], 12, true);
 		animation.play("Brillo");
-		velocity.y = 50;
+		velocity.y = 200;
+		velocity.x = 75;
 		
 	}
 	

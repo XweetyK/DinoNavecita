@@ -14,6 +14,6 @@ class Enemy1 extends Enemy
 		animation.add("e1", [0, 1], 12, true);
 		animation.play("e1");
 		puntaje = 25;
-		
+		velocity.x =-5;
 	}
 }

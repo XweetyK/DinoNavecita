@@ -14,6 +14,7 @@ class Enemy3 extends Enemy
 		animation.add("e3", [0, 1], 12, true);
 		animation.play("e3");
 		puntaje = 75;
+		velocity.x = -10;
 	}
 	
 }

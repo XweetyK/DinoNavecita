@@ -19,6 +19,17 @@
     <Enemy1 id="8" x="1920" y="96" />
     <Enemy1 id="9" x="2112" y="32" />
     <Enemy1 id="10" x="2112" y="160" />
+    <Enemy1 id="11" x="448" y="96" />
+    <Enemy1 id="12" x="480" y="32" />
+    <Enemy1 id="13" x="480" y="160" />
+    <Enemy1 id="14" x="800" y="96" />
+    <Enemy1 id="15" x="736" y="160" />
+    <Enemy1 id="16" x="1312" y="64" />
+    <Enemy1 id="17" x="1472" y="128" />
+    <Enemy1 id="18" x="1792" y="32" />
+    <Enemy1 id="19" x="1664" y="160" />
+    <Enemy1 id="20" x="1952" y="32" />
+    <Enemy1 id="21" x="2304" y="160" />
   </Enemy1>
   <Enemy2>
     <Enemy2 id="0" x="800" y="32" />
@@ -26,19 +37,32 @@
     <Enemy2 id="2" x="960" y="96" />
     <Enemy2 id="3" x="1024" y="96" />
     <Enemy2 id="4" x="832" y="160" />
-    <Enemy2 id="5" x="1600" y="64" />
-    <Enemy2 id="6" x="1664" y="64" />
-    <Enemy2 id="7" x="1760" y="128" />
-    <Enemy2 id="8" x="1824" y="128" />
     <Enemy2 id="9" x="2016" y="96" />
     <Enemy2 id="10" x="2112" y="96" />
+    <Enemy2 id="7" x="1760" y="128" />
+    <Enemy2 id="8" x="1824" y="128" />
+    <Enemy2 id="5" x="1600" y="64" />
+    <Enemy2 id="6" x="1664" y="64" />
+    <Enemy2 id="11" x="1984" y="160" />
+    <Enemy2 id="12" x="2336" y="32" />
+    <Enemy2 id="13" x="1472" y="32" />
   </Enemy2>
   <Enemy3>
-	<Enemy3 id="0" x="1120" y="32" />
+    <Enemy3 id="0" x="1120" y="32" />
     <Enemy3 id="1" x="1184" y="96" />
     <Enemy3 id="2" x="1248" y="160" />
     <Enemy3 id="3" x="2208" y="64" />
     <Enemy3 id="4" x="2336" y="96" />
     <Enemy3 id="5" x="2208" y="128" />
+    <Enemy3 id="6" x="992" y="160" />
+    <Enemy3 id="7" x="704" y="96" />
+    <Enemy3 id="8" x="576" y="32" />
+    <Enemy3 id="9" x="1024" y="32" />
+    <Enemy3 id="10" x="1120" y="128" />
+    <Enemy3 id="11" x="1408" y="96" />
+    <Enemy3 id="12" x="1728" y="32" />
+    <Enemy3 id="13" x="1856" y="64" />
+    <Enemy3 id="14" x="2048" y="64" />
+    <Enemy3 id="15" x="2048" y="128" />
   </Enemy3>
 </level>

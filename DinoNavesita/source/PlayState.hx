@@ -143,7 +143,7 @@ class PlayState extends FlxState
 		medidor.contar(poder);
 		//colisiones
 		//player y enemigo
-		for (i in 0 ... enemyGroup.members.length -1) 
+		for (i in 0 ... enemyGroup.members.length) 
 		{
 			var loco:Enemy = enemyGroup.members[i];
 			if (FlxG.overlap(player, loco)) 
