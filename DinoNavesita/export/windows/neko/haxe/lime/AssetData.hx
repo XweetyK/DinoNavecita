@@ -44,6 +44,16 @@ class AssetData {
 			type.set ("assets/images/option.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/portada.png", "assets/images/portada.png");
 			type.set ("assets/images/portada.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/power0.png", "assets/images/power0.png");
+			type.set ("assets/images/power0.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/power1.png", "assets/images/power1.png");
+			type.set ("assets/images/power1.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/power2.png", "assets/images/power2.png");
+			type.set ("assets/images/power2.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/power3.png", "assets/images/power3.png");
+			type.set ("assets/images/power3.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/power4.png", "assets/images/power4.png");
+			type.set ("assets/images/power4.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/YEE.png", "assets/images/YEE.png");
 			type.set ("assets/images/YEE.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/YEE2.png", "assets/images/YEE2.png");

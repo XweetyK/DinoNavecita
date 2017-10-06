@@ -1,6 +1,7 @@
 package;
 import entities.Compa;
 import entities.Enemy1;
+import entities.Medidor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.editors.ogmo.FlxOgmoLoader;
@@ -30,7 +31,9 @@ class PlayState extends FlxState
 	private var compa2:Compa;
 	private var cuentaCompa:Int;
 	private var velGlobal:Float;
-
+	private var medidor:Medidor;
+	private var poder:Int;
+	
 	override public function create():Void
 	{
 		super.create();
@@ -69,6 +72,9 @@ class PlayState extends FlxState
 		add(fondo);
 		player = new Player(null, 100, null, balasJugador,misilesJugador);
 		add(tilemap);
+		poder = 0;
+		medidor = new Medidor();
+		add(medidor);
 		add(player);
 		add(enemyGroup);
 	}
@@ -89,6 +95,15 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		FlxG.collide(tilemap, player);//colision con mapa
+		medidor.contar(poder);
+		if (FlxG.keys.justPressed.A) 
+		{
+			poder++;
+		}
+		if (FlxG.keys.justPressed.S) 
+		{
+			poder = 0;
+		}
 	}
 
 	function playerLose()

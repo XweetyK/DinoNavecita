@@ -76,6 +76,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
 		
@@ -85,6 +90,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -624,6 +634,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -661,6 +676,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/option.png", AssetType.IMAGE);
 		path.set ("assets/images/portada.png", "assets/images/portada.png");
 		type.set ("assets/images/portada.png", AssetType.IMAGE);
+		path.set ("assets/images/power0.png", "assets/images/power0.png");
+		type.set ("assets/images/power0.png", AssetType.IMAGE);
+		path.set ("assets/images/power1.png", "assets/images/power1.png");
+		type.set ("assets/images/power1.png", AssetType.IMAGE);
+		path.set ("assets/images/power2.png", "assets/images/power2.png");
+		type.set ("assets/images/power2.png", AssetType.IMAGE);
+		path.set ("assets/images/power3.png", "assets/images/power3.png");
+		type.set ("assets/images/power3.png", AssetType.IMAGE);
+		path.set ("assets/images/power4.png", "assets/images/power4.png");
+		type.set ("assets/images/power4.png", AssetType.IMAGE);
 		path.set ("assets/images/YEE.png", "assets/images/YEE.png");
 		type.set ("assets/images/YEE.png", AssetType.IMAGE);
 		path.set ("assets/images/YEE2.png", "assets/images/YEE2.png");
@@ -728,6 +753,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/portada.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/power0.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/power1.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/power2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/power3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/power4.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/YEE.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -781,6 +821,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1553,6 +1598,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
@@ -1562,6 +1612,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
+
+
+
 
 
 
