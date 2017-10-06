@@ -16,7 +16,7 @@ class Misil extends FlxSprite
 		this.angle = 270;
 		animation.add("Brillo", [0, 1, 2], 12, true);
 		animation.play("Brillo");
-		velocity.y = 30;
+		velocity.y = 50;
 		
 	}
 	
@@ -26,11 +26,13 @@ class Misil extends FlxSprite
 		MisilColision();
 	}
 	
-	public function MisilColision():Void
+	public function MisilColision():Bool
 	{
 		if (this.x < FlxG.camera.scroll.x || this.y < FlxG.camera.scroll.y || this.x > FlxG.camera.scroll.x + FlxG.camera.width - this.width || this.y > FlxG.camera.scroll.y + FlxG.camera.height- this.height) 
 		{
-			this.destroy();
+			return true;
 		}
+		else
+		return false;
 	}
 }

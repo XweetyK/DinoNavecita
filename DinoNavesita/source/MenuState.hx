@@ -25,7 +25,6 @@ class MenuState extends FlxState
 		var init_x:Int = Math.floor(FlxG.width / 2 - 40);
 		var butonNew = new FlxButton(init_x, 175, "Start!", onNew);
 		add(butonNew);
-		FlxG.sound.play(AssetPaths.menu__wav);
 	}
 	
 	private function onNew(): Void

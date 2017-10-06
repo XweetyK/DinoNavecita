@@ -64,18 +64,14 @@ class PlayState extends FlxState
 		FlxG.worldBounds.set(0, 0, 3000, 240);
 		FlxG.mouse.visible = false;
 		velGlobal = Reg.velocidadCamara;
-
 		loader.loadEntities(entityCreator, "Enemy1");
 		loader.loadEntities(entity2Creator, "Enemy2");
-		loader.loadEntities(entity3Creator, "Enemy3");
-		
+		loader.loadEntities(entity3Creator, "Enemy3");	
 		var text = new FlxText (350, 15, 480, "la version funcional viene en el DLC", 12);
 		text.velocity.x = -300;
-
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
 		powerups = new FlxTypedGroup<Powerup>();
-
 		cantVidas = Reg.cantVidasMax;
 		gameOver = false;
 		cuentaCompa = 0;
@@ -150,20 +146,38 @@ class PlayState extends FlxState
 		for (i in 0 ... enemyGroup.members.length -1) 
 		{
 			var loco:Enemy = enemyGroup.members[i];
-			for (j in 0 ... balasJugador.members.length - 1) 
+			for (j in 0 ... balasJugador.members.length) 
 			{
 				var bala:PlayerBala = balasJugador.members[j];
-				if (FlxG.collide(loco,bala)) 
+				if (FlxG.overlap(loco,bala)) 
 				{
 					FlxG.sound.play(AssetPaths.yee__wav);
 					enemyGroup.remove(loco, true);
 					balasJugador.remove(bala, true);
 				}
 			}
+			for (h in 0...misilesJugador.members.length)
+			{
+				var misil:Misil = misilesJugador.members[h];
+				if (FlxG.overlap(loco, misil))
+				{
+					FlxG.sound.play(AssetPaths.yee__wav);
+					enemyGroup.remove(loco, true);
+					misilesJugador.remove(misil, true);
+				}
+			}
 		}
 		balasJugador.forEach(chequearBala,false);
-		
+		misilesJugador.forEach(chequearMisil, false);
 		testearPoder();
+	}
+	
+	private function chequearMisil(misil:Misil):Void
+	{
+		if (misil.MisilColision())
+		{
+			misilesJugador.remove(misil, true);
+		}
 	}
 	private function chequearBala(bala:PlayerBala):Void
 	{
