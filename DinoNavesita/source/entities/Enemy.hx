@@ -13,6 +13,7 @@ class Enemy extends FlxSprite
 
 	private var powerupRef:FlxTypedGroup<Powerup>;
 	private var r:FlxRandom;
+	private var puntaje:Int;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset,_powerupRef:FlxTypedGroup<Powerup>) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -27,6 +28,10 @@ class Enemy extends FlxSprite
 		{
 			powerupRef.add(new Powerup(x, y));
 		}
+	}
+	public function suValor():Int
+	{
+		return puntaje;
 	}
 	
 }
