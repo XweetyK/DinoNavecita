@@ -13,6 +13,7 @@ class Enemy3 extends Enemy
 		loadGraphic(AssetPaths.YEE3__png, true, 30, 30);
 		animation.add("e3", [0, 1], 12, true);
 		animation.play("e3");
+		puntaje = 75;
 	}
 	
 }

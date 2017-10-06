@@ -25,6 +25,7 @@ import flixel.math.FlxRandom;
 class PlayState extends FlxState
 {
 	private var cantVidas:Int;
+	private var score:Int;
 	private var gameOver:Bool;
 	private var guide:GuiaCamara; //guía de la camara.
 	private var player:Player;
@@ -39,7 +40,8 @@ class PlayState extends FlxState
 	private var velGlobal:Float;
 	private var medidor:Medidor;
 	private var poder:Int;
-	private var r:FlxRandom;
+	private var playerVidas:FlxText;
+	private var playerScore:FlxText;
 
 	override public function create():Void
 	{
@@ -67,11 +69,14 @@ class PlayState extends FlxState
 		loader.loadEntities(entityCreator, "Enemy1");
 		loader.loadEntities(entity2Creator, "Enemy2");
 		loader.loadEntities(entity3Creator, "Enemy3");	
-		var text = new FlxText (350, 15, 480, "la version funcional viene en el DLC", 12);
-		text.velocity.x = -300;
+		playerVidas = new FlxText (1, 1, 480, "", 10);
+		playerVidas.scrollFactor.x = 0;
+		playerScore = new FlxText(100, 1, 480, "", 10);
+		playerScore.scrollFactor.x = 0;
 		balasJugador = new FlxTypedGroup<PlayerBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
 		cantVidas = Reg.cantVidasMax;
+		score = 0;
 		gameOver = false;
 		cuentaCompa = 0;
 		guide = new GuiaCamara(FlxG.width / 2, FlxG.height / 2);
@@ -88,9 +93,10 @@ class PlayState extends FlxState
 		add(medidor);
 		add(player);
 		add(enemyGroup);
-		add(text);
+		add(playerVidas);
+		add(playerScore);
 		
-		FlxG.sound.play(AssetPaths.mercury__wav);
+		FlxG.sound.play(AssetPaths.dinopianito__wav,0.25);
 	}
 
 	private function entityCreator(entityName:String, entityData:Xml)
@@ -119,10 +125,15 @@ class PlayState extends FlxState
 		e3.y = y;
 		enemyGroup.add(e3);
 	}
-
+	private function addPuntaje(num:Int):Void
+	{
+		score += num;
+	}
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		playerVidas.text = "Vidas: " + cantVidas;
+		playerScore.text = "Score: " + score;
 		if(FlxG.collide(tilemap, player))
 		{
 			playerLose();
@@ -152,7 +163,7 @@ class PlayState extends FlxState
 				if (FlxG.overlap(loco,bala)) 
 				{
 					FlxG.sound.play(AssetPaths.yee__wav);
-					dropear(loco.x, loco.y);
+					addPuntaje(loco.suValor());
 					enemyGroup.remove(loco, true);
 					balasJugador.remove(bala, true);
 				}
@@ -163,7 +174,7 @@ class PlayState extends FlxState
 				if (FlxG.overlap(loco, misil))
 				{
 					FlxG.sound.play(AssetPaths.yee__wav);
-					dropear(loco.x, loco.y);
+					addPuntaje(loco.suValor());
 					enemyGroup.remove(loco, true);
 					misilesJugador.remove(misil, true);
 				}
@@ -217,6 +228,7 @@ class PlayState extends FlxState
 		if (bala.balaColision()) 
 		{
 			balasJugador.remove(bala, true);
+			trace("yay");
 		}
 	}
 

@@ -16,11 +16,12 @@ class Medidor extends FlxSprite
 		loadGraphic(AssetPaths.power0__png, true, 344, 32);
 		scale.set(0.5, 0.5);
 		y = FlxG.camera.height - this.height+4;
-		x = FlxG.camera.scroll.x - this.width/8;
+		x = FlxG.camera.scroll.x - this.width / 8;
+		scrollFactor.x = 0;
 	}
 	override public function update(elapsed:Float):Void
 	{
-		x = FlxG.camera.scroll.x - this.width/8;
+		//	x = FlxG.camera.scroll.x - this.width/8;
 	}
 	public function contar(poder:Int):Void
 	{
