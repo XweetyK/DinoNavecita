@@ -15,5 +15,19 @@ class Enemy1 extends Enemy
 		animation.play("e1");
 		puntaje = 25;
 		velocity.x =-5;
+		velocidad = 50;
+		velocity.y = velocidad;
+	}
+	
+	override private function movimiento():Void
+	{
+		if (this.y>= FlxG.camera.height - this.height - 30) 
+		{
+			velocity.y = -velocidad;
+		}
+		if (this.y <= 0) 
+		{
+			velocity.y = velocidad;
+		}
 	}
 }

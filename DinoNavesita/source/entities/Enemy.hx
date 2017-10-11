@@ -12,13 +12,25 @@ import entities.Powerup;
 class Enemy extends FlxSprite
 {
 
-	private var powerupRef:FlxTypedGroup<Powerup>;
 	private var r:FlxRandom;
 	private var puntaje:Int;
+	private var velocidad:Float;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		FlxG.state.add(powerupRef);
+	}
+	override public function update(elapsed:Float):Void
+	{
+		super.update(elapsed);
+		if (this.isOnScreen()) 
+		{
+			movimiento();
+		}
+	}
+	
+	private function movimiento():Void
+	{
+		
 	}
 	
 	public function suValor():Int

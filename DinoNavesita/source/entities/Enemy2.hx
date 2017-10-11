@@ -7,6 +7,7 @@ import flixel.math.FlxRandom;
 
 class Enemy2 extends Enemy
 {
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -15,6 +16,8 @@ class Enemy2 extends Enemy
 		animation.play("e2");
 		puntaje = 50;
 		velocity.x = 0;
+		
 	}
+	
 	
 }
