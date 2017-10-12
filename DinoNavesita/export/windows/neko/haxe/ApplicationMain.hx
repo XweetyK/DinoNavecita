@@ -128,7 +128,7 @@ class ApplicationMain {
 				
 			},
 			512, 480, 
-			60, 
+			30, 
 			0,
 			(true ? flash.Lib.HARDWARE : 0) |
 			(true ? flash.Lib.ALLOW_SHADERS : 0) |
@@ -515,10 +515,10 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "73",
+			build: "13",
 			company: "ChikoritasTeam",
 			file: "DinoNavesita",
-			fps: 60,
+			fps: 30,
 			name: "DinoNavesita",
 			orientation: "landscape",
 			packageName: "com.example.myapp",

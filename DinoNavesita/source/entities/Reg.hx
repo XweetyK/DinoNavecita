@@ -19,5 +19,7 @@ class Reg
 	static inline public var fireInacuraccy:Float = 0;
 	//PlayerBala
 	static inline public var velocidadBalaX:Int = 300;
+	//enemy bala
+	static inline public var balaCont:Int=0;
 	
 }

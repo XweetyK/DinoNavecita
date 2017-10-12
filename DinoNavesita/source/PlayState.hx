@@ -14,6 +14,8 @@ import entities.GuiaCamara;
 import entities.Player;
 import entities.Reg;
 import entities.PlayerBala;
+import entities.EnemyBala;
+import entities.NegaPianito;
 import flixel.FlxObject;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -21,6 +23,7 @@ import entities.Misil;
 import entities.Powerup;
 import flixel.text.FlxText;
 import flixel.math.FlxRandom;
+import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
@@ -29,7 +32,9 @@ class PlayState extends FlxState
 	private var gameOver:Bool;
 	private var guide:GuiaCamara; //guía de la camara.
 	private var player:Player;
+	private var nega:NegaPianito;
 	private var balasJugador:FlxTypedGroup<PlayerBala>;
+	private var balasEnemy:FlxTypedGroup<EnemyBala>;
 	private var misilesJugador:FlxTypedGroup<Misil>;
 	private var fondo:FlxSprite;
 	private var tilemap:FlxTilemap;
@@ -43,11 +48,16 @@ class PlayState extends FlxState
 	private var playerVidas:FlxText;
 	private var playerScore:FlxText;
 	private var r:FlxRandom;
-
+	private var bossLife:FlxSprite;
+	private var bossFrame:FlxSprite;
+	private var bossLifeState:Int;
+	private var bossText:FlxText;
 	override public function create():Void
 	{
 		super.create();
 		enemyGroup = new FlxTypedGroup<Enemy>();
+		bossFrame = new FlxSprite(1950, 40, AssetPaths.barside__png);
+		bossLife = new FlxSprite(1950, 40, AssetPaths.barfill__png);
 		//Mapa de Ogmo
 		var loader:FlxOgmoLoader = new FlxOgmoLoader (AssetPaths.levelv2__oel);
 		tilemap = loader.loadTilemap(AssetPaths.floor__png, 30, 30, "Tileset");
@@ -75,9 +85,11 @@ class PlayState extends FlxState
 		playerScore = new FlxText(100, 1, 480, "", 10);
 		playerScore.scrollFactor.x = 0;
 		balasJugador = new FlxTypedGroup<PlayerBala>();
+		balasEnemy = new FlxTypedGroup<EnemyBala>();
 		misilesJugador = new FlxTypedGroup<Misil>();
 		cantVidas = Reg.cantVidasMax;
 		score = 0;
+		bossLifeState = 6;
 		gameOver = false;
 		cuentaCompa = 0;
 		r = new FlxRandom();
@@ -88,6 +100,7 @@ class PlayState extends FlxState
 		fondo.velocity.x = 10;
 		add(fondo);
 		player = new Player(null, 100, null, balasJugador, misilesJugador);
+		nega = new NegaPianito(2000, 100, null,balasEnemy);
 		add(tilemap);
 		poder = 0;
 		medidor = new Medidor();
@@ -96,8 +109,9 @@ class PlayState extends FlxState
 		add(enemyGroup);
 		add(playerVidas);
 		add(playerScore);
-		
-		FlxG.sound.play(AssetPaths.dinopianito__wav,0.25);
+		add(nega);
+		FlxG.sound.load();
+		FlxG.sound.play(AssetPaths.dinopianito__wav, 0.15, true);
 	}
 
 	private function entityCreator(entityName:String, entityData:Xml)
@@ -136,10 +150,28 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		playerVidas.text = "Vidas: " + cantVidas;
 		playerScore.text = "Score: " + score;
+		trace(guide.x);
 		if(FlxG.collide(tilemap, player))
 		{
 			playerLose();
-		}//colision con mapa
+		}//colision con mapas
+		if (FlxG.overlap(player, nega))
+		{
+			playerLose();
+		}
+		if (guide.x == 1900)//1900
+		{
+			FlxG.sound.pause();
+			FlxG.sound.play(AssetPaths.negasound__wav,0.25, true);
+		}
+		if (guide.x == 1910)
+		{
+			nega.vel();
+			add(bossLife);
+			add(bossFrame);
+			bossLife.velocity.x = Reg.velocidadCamara;
+			bossFrame.velocity.x = Reg.velocidadCamara;
+		}
 		medidor.contar(poder);
 		//colisiones
 		//player y enemigo
@@ -183,7 +215,18 @@ class PlayState extends FlxState
 					misilesJugador.remove(misil, true);
 				}
 			}
+			
 		}
+		for (i in 0 ... balasJugador.members.length) 
+			{
+				var bala:PlayerBala = balasJugador.members[i];
+				if (FlxG.overlap(nega,bala)) 
+				{
+					FlxG.sound.play(AssetPaths.yee__wav);
+					balasJugador.remove(bala, true);
+					bossHit();
+				}
+			}
 		balasJugador.forEach(chequearBala,false);
 		misilesJugador.forEach(chequearMisil, false);
 		poder = player.getPoder();
@@ -232,7 +275,6 @@ class PlayState extends FlxState
 		if (bala.balaColision()) 
 		{
 			balasJugador.remove(bala, true);
-			trace("yay");
 		}
 	}
 
@@ -297,5 +339,28 @@ class PlayState extends FlxState
 			compa1.detener();
 			compa2.detener();
 		}
+	}
+	private function bossHit():Void
+	{
+		bossLifeState--;
+		if (bossLifeState == 4)
+			bossLife.loadGraphic(AssetPaths.barfill2__png);
+		if (bossLifeState == 3)
+			bossLife.loadGraphic(AssetPaths.barfill3__png);
+		if (bossLifeState == 2)
+			bossLife.loadGraphic(AssetPaths.barfill4__png);
+		if (bossLifeState == 1)
+			bossLife.loadGraphic(AssetPaths.barfill5__png);
+		if (bossLifeState == 0)
+		{
+			bossLife.kill();
+			nega.kill();
+			camera.fade(FlxColor.BLACK, 2, false, endGame, false);
+		}
+	}
+	private function endGame():Void
+	{
+		var winner:Winner = new Winner();
+		FlxG.switchState(winner);
 	}
 }

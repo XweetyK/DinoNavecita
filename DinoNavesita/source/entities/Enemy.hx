@@ -5,10 +5,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.math.FlxRandom;
 import entities.Powerup;
-/**
- * ...
- * @author Tomás Mugetti
- */
+import entities.EnemyBala;
+
 class Enemy extends FlxSprite
 {
 

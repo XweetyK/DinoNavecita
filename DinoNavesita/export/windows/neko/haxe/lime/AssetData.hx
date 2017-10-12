@@ -34,6 +34,18 @@ class AssetData {
 			type.set ("assets/data/levelv2.oep", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/Background.png", "assets/images/Background.png");
 			type.set ("assets/images/Background.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/barfill.png", "assets/images/barfill.png");
+			type.set ("assets/images/barfill.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/barfill2.png", "assets/images/barfill2.png");
+			type.set ("assets/images/barfill2.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/barfill3.png", "assets/images/barfill3.png");
+			type.set ("assets/images/barfill3.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/barfill4.png", "assets/images/barfill4.png");
+			type.set ("assets/images/barfill4.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/barfill5.png", "assets/images/barfill5.png");
+			type.set ("assets/images/barfill5.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/barside.png", "assets/images/barside.png");
+			type.set ("assets/images/barside.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Dinopianito.png", "assets/images/Dinopianito.png");
 			type.set ("assets/images/Dinopianito.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/dinoshot.png", "assets/images/dinoshot.png");
@@ -44,6 +56,8 @@ class AssetData {
 			type.set ("assets/images/FRUTITA.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/gameover.png", "assets/images/gameover.png");
 			type.set ("assets/images/gameover.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/Negapianito.png", "assets/images/Negapianito.png");
+			type.set ("assets/images/Negapianito.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/option.png", "assets/images/option.png");
 			type.set ("assets/images/option.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/portada.png", "assets/images/portada.png");
@@ -66,6 +80,8 @@ class AssetData {
 			type.set ("assets/images/YEE2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/YEE3.png", "assets/images/YEE3.png");
 			type.set ("assets/images/YEE3.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/YOUWIN.png", "assets/images/YOUWIN.png");
+			type.set ("assets/images/YOUWIN.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/music/death.wav", "assets/music/death.wav");
 			type.set ("assets/music/death.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/dinopianito.wav", "assets/music/dinopianito.wav");
@@ -74,6 +90,8 @@ class AssetData {
 			type.set ("assets/music/menu.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/mercury.wav", "assets/music/mercury.wav");
 			type.set ("assets/music/mercury.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/music/negasound.wav", "assets/music/negasound.wav");
+			type.set ("assets/music/negasound.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/relife.wav", "assets/music/relife.wav");
 			type.set ("assets/music/relife.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/shoot.wav", "assets/music/shoot.wav");

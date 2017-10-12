@@ -7,6 +7,7 @@ import flixel.math.FlxRandom;
 
 class Enemy1 extends Enemy
 {
+	private var unaVez:Bool;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -16,11 +17,16 @@ class Enemy1 extends Enemy
 		puntaje = 25;
 		velocity.x =-5;
 		velocidad = 50;
-		velocity.y = velocidad;
+		unaVez = true;
 	}
 	
 	override private function movimiento():Void
 	{
+		if (unaVez) 
+		{
+			velocity.y = velocidad;
+			unaVez = false;
+		}
 		if (this.y>= FlxG.camera.height - this.height - 30) 
 		{
 			velocity.y = -velocidad;

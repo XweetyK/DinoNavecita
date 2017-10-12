@@ -10,7 +10,6 @@
 -cp source
 -D HXCPP_QUIET
 -D openfl-next
--D FLX_NO_MOUSE
 -D tools=2.9.1
 -D FLX_NO_DEBUG
 -D no-compilation
